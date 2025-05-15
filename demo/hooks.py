@@ -43,7 +43,10 @@ app_license = "mit"
 # page_js = {"page" : "public/js/file.js"}
 
 # include js in doctype views
-# doctype_js = {"doctype" : "public/js/doctype.js"}
+doctype_js = {"Purchase Order" : "/custom_script/purchase_order/purchase_order.js"}
+doctype_js = {"Attendance": "/custom_script/attendance/attendance.js"}
+doctype_js = {"Employee": "/custom_script/employee/employee.js"}
+doctype_js = {"Accounting Period": "/custom_script/accounting_period/accounting_period.js"}
 # doctype_list_js = {"doctype" : "public/js/doctype_list.js"}
 # doctype_tree_js = {"doctype" : "public/js/doctype_tree.js"}
 # doctype_calendar_js = {"doctype" : "public/js/doctype_calendar.js"}
@@ -129,42 +132,52 @@ app_license = "mit"
 # ---------------
 # Override standard doctype classes
 
-# override_doctype_class = {
-# 	"ToDo": "custom_app.overrides.CustomToDo"
-# }
+override_doctype_class = {
+	"Accounting Period": "demo.custom_script.accounting_period.accounting_period.CustomAccountingPeriod"
+}
 
 # Document Events
 # ---------------
 # Hook on document methods and events
 
-# doc_events = {
-# 	"*": {
-# 		"on_update": "method",
-# 		"on_cancel": "method",
-# 		"on_trash": "method"
-# 	}
-# }
+doc_events = {
+	# "*": {
+	# 	"on_update": "method",
+	# 	"on_cancel": "method",
+	# 	"on_trash": "method"
+	# }
+    "Purchase Order": {
+        "validate": "demo.custom_script.purchase_order.purchase_order.validate"
+    },
+    "Attendance": {
+        "validate": "demo.custom_script.attendance.attendance.validate"
+	},
+    "Employee": {
+        "validate": "demo.custom_script.employee.employee.validate"
+	}
+}
 
 # Scheduled Tasks
 # ---------------
 
-# scheduler_events = {
-# 	"all": [
-# 		"demo.tasks.all"
-# 	],
-# 	"daily": [
-# 		"demo.tasks.daily"
-# 	],
-# 	"hourly": [
-# 		"demo.tasks.hourly"
-# 	],
-# 	"weekly": [
-# 		"demo.tasks.weekly"
-# 	],
-# 	"monthly": [
-# 		"demo.tasks.monthly"
-# 	],
-# }
+scheduler_events = {
+	# "all": [
+	# 	"demo.tasks.all"
+	# ],
+	# "daily": [
+	# 	"demo.tasks.daily"
+	# ],
+	# "hourly": [
+	# 	"demo.tasks.hourly"
+	# ],
+	# "weekly": [
+	# 	"demo.tasks.weekly"
+	# ],
+	# "monthly": [
+	# 	"demo.tasks.monthly"
+	# ],
+
+}
 
 # Testing
 # -------
